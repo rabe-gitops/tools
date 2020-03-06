@@ -32,12 +32,12 @@
     steps {
       // Select container inside Pod
       container('kaniko') {
-        sh '''
+        sh """
         /kaniko/executor \
-        --dockerfile $(pwd)/Dockerfile \
-        --context $(pwd) \
-        --destination=904573531492.dkr.ecr.eu-west-1.amazonaws.com/app:latest
-      '''
+        --dockerfile \$(pwd)/Dockerfile \
+        --context \$(pwd) \
+        --destination=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/${REPO_NAME}:latest
+      """
       }
     }
     ```
