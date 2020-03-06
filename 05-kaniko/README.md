@@ -37,7 +37,7 @@
           --dockerfile \$(pwd)/Dockerfile \
           --context \$(pwd) \
           --destination=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/${REPO_NAME}:latest
-      """
+        """
       }
     }
     ```
