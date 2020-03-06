@@ -5,22 +5,22 @@
 
 2. Configure a Jenkins Kubernetes Pod Template and Container template, using the following values, in the Jenkins system settings:
 
-    The `debug-539ddefcae3fd6b411a95982a830d987f4214251` tag on the image is currently fundamental to make it work with the Jenkins Kubernetes plugin! Any newer stable version will cause pods to be stuck on the terminating state.
+    The `debug-539ddefcae3fd6b411a95982a830d987f4214251` tag on the image is currently fundamental to make it work with the Jenkins Kubernetes plugin! Newer versions seem to cause Pods to be stuck on the terminating state.
 
     * Pod Template:
-      * name: ci-kaniko
-      * namespace: jenkinsci
-      * label: kaniko-slave
+      * name: `ci-kaniko`
+      * namespace: `jenkinsci`
+      * label: `kaniko-slave`
 
     * container template:
-      * name: kaniko
-      * image: gcr.io/kaniko-project/executor:debug-539ddefcae3fd6b411a95982a830d987f4214251
-      * imagePullPolicy: Always
-      * command: /busybox/cat
-      * tty: true
+      * name: `kaniko`
+      * image: `gcr.io/kaniko-project/executor:debug-539ddefcae3fd6b411a95982a830d987f4214251`
+      * imagePullPolicy: `always`
+      * command: `/busybox/cat`
+      * tty: `true`
       * volumes (of type ConfigMap):
-        * name: docker-config
-        * mountPath: /kaniko/.docker
+        * name: `docker-config`
+        * mountPath: `/kaniko/.docker`
 
 3. Use it as follows, in the Jenkinsfile:
     ```
