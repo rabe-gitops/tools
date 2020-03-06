@@ -1,0 +1,17 @@
+master:
+  jenkinsUriPrefix: /jenkinsci
+  servicePort: 8080
+  ingress:
+    enabled: true
+    path: /jenkinsci*
+    annotations:
+      kubernetes.io/ingress.class: alb
+      alb.ingress.kubernetes.io/group.name: common-alb-group
+      alb.ingress.kubernetes.io/group.order: '200'
+      alb.ingress.kubernetes.io/target-type: ip
+      alb.ingress.kubernetes.io/healthcheck-port: '8080'
+      alb.ingress.kubernetes.io/healthcheck-path: /jenkinsci/login
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-1:904573531492:certificate/c8242151-0232-45d3-99e1-ef84bee4cf4f
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+      alb.ingress.kubernetes.io/target-group-attributes: deregistration_delay.timeout_seconds=30
+
