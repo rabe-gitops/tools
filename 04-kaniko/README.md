@@ -13,7 +13,6 @@
     * container template:
       * name: `kaniko`
       * image: `gcr.io/kaniko-project/executor:debug-v0.18.0`
-      * imagePullPolicy: `always`
       * command: `/busybox/cat`
       * tty: `true`
       * volumes (of type ConfigMap):
@@ -32,9 +31,9 @@
       container('kaniko') {
         sh """
           /kaniko/executor \
-          --dockerfile \$(pwd)/Dockerfile \
-          --context \$(pwd) \
-          --destination=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/${REPO_NAME}:latest
+            --dockerfile \$(pwd)/Dockerfile \
+            --context \$(pwd) \
+            --destination=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/${REPO_NAME}:latest
         """
       }
     }
