@@ -8,6 +8,8 @@
     helm install -n ci stable/jenkins --namespace jenkinsci --values values.yaml
     ```
 
+Note: you can skip steps from 3 to 9 if you directly attach the needed policies on the worker nodes IAM Role (not recommended).
+
 3. Create the slaves ServiceAccount:
     ```
     kubectl create serviceaccount jenkinsci-slave-serviceaccount -n jenkinsci
