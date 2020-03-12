@@ -1,3 +1,10 @@
+provider: aws
+txtPrefix: 'k8s-externaldns-'
+policy: sync
+sources:
+  - service
+  - ingress
 aws:
-  region: "eu-west-1"
+  region: eu-west-1
+  evaluateTargetHealth: false
 

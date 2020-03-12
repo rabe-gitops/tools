@@ -1,16 +1,16 @@
 master:
-  jenkinsUriPrefix: /jenkinsci
   servicePort: 8080
   ingress:
     enabled: true
-    path: /jenkinsci*
+    hostname: jenkinsci.rabegitops.it
     annotations:
       kubernetes.io/ingress.class: alb
+      alb.ingress.kubernetes.io/scheme: internet-facing
       alb.ingress.kubernetes.io/group.name: common-alb-group
       alb.ingress.kubernetes.io/group.order: '200'
       alb.ingress.kubernetes.io/target-type: ip
       alb.ingress.kubernetes.io/healthcheck-port: '8080'
-      alb.ingress.kubernetes.io/healthcheck-path: /jenkinsci/login
+      alb.ingress.kubernetes.io/healthcheck-path: /login
       alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-1:904573531492:certificate/5031567c-58b4-4867-a15c-05dbd5da426c
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
       alb.ingress.kubernetes.io/target-group-attributes: deregistration_delay.timeout_seconds=30
