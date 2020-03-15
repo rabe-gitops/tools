@@ -57,7 +57,7 @@ Note: you can skip steps from 3 to 9 if you directly attach the needed policies 
 
 13. If your Jenkins certificate is self-signed, you need to go to the Webhooks configuration on your GitHub repo and make sure that the insecure delivery is flagged. The "Manage hooks" Jenkins settings (see point 2) should be then disabled in order to avoid the SSL verification setting reset
 
-14. Create multi-branch declarative pipelines (preferably using the BlueOcean UI plugin), and enable branches, tags, and changes discovery on the pipeline configuration (using the Jenkins Classic UI). Moreover, after installing the [Basic Branch Build Strategies](https://plugins.jenkins.io/basic-branch-build-strategies) plugin, various build triggers can be configured for each discovered event
+14. Create multi-branch declarative pipelines (preferably using the BlueOcean UI plugin), and enable branches, tags, and changes discovery on the pipeline configuration (using the Jenkins Classic UI). Moreover, after installing the [Basic Branch Build Strategies](https://plugins.jenkins.io/basic-branch-build-strategies) plugin, various build triggers can be configured for each discovered event (push on branch, tag creation, change request, etc.): if automated tag builds will be enabled from this plugin (like in this project), remember to set - from the build strategy options - a maximum number of days after which the tags are not built anymore (to avoid a build storm when a new pipeline will be linked to a repository).
 
 15. Configure the various slaves (Pod Templates) to use:
     * the `jenkinsci` namespace
